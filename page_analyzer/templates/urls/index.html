@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}
+    <h1>Pages</h1>
+{% endblock title %}
+{% block content %}
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-nowrap" data-test="urls">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Last check</th>
+                    <th>Status code</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for site in data %}
+                    <tr>
+                        <td>{{ site.id }}</td>
+                        <td>
+                            <a href="{{ url_for("url_info", id = site.id) }}">{{ site.name }}</a>
+                        </td>
+                        {% if site.last_check_date %}
+                            <td>{{ site.last_check_date }}</td>
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                        {% if site.status_code %}
+                            <td>{{ site.status_code }}</td>
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

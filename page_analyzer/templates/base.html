@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport"
+              content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+              rel="stylesheet">
+        <title>Page Analyzer</title>
+    </head>
+    <body class="min-vh-100 d-flex flex-column">
+        <header class="flex-shrink-0">
+            {% include "components/navbar.html" %}
+        </header>
+        {% include "components/messages.html" %}
+        <main class="flex-grow-1">
+            <div class="container-lg mt-3">
+                {% block title %}
+                {% endblock title %}
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
