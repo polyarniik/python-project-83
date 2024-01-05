@@ -51,12 +51,12 @@ def create_url():
     conn = db.get_db(app)
     if existed_url := db.find_url_by_name(conn, url):
         id = existed_url.id
-        flash("Page already exists", "info")
+        flash("Страница уже существует", "info")
     else:
         id = db.add_url(conn, url)
         print(id)
         db.commit(conn)
-        flash("Page successfully added", "success")
+        flash("Страница успешно добавлена", "success")
 
     db.commit(conn)
     db.close(conn)
@@ -94,13 +94,13 @@ def url_checks(id):
         resp = requests.get(url.name)
         resp.raise_for_status()
     except requests.exceptions.RequestException:
-        flash("An error occurred during cheking", "danger")
+        flash("Произошла ошибка при проверке", "danger")
         return redirect(url_for("url_info", id=id))
 
     page_data = parser.parse_page_data(resp)
     db.add_url_check(conn, id, page_data)
     db.commit(conn)
-    flash("Page successfully checked", "success")
+    flash("Страница успешно проверена", "success")
     db.close(conn)
 
     return redirect(url_for("url_info", id=id))

@@ -3,6 +3,6 @@ from validators.url import url as url_validator
 
 def validate(url):
     if not url_validator(url):
-        return "Wrong URL"
+        return "Некорректный URL"
     elif len(url) > 255:
-        return "The URL exceeds 255 characters"
+        return "URL превышает 255 символов"
