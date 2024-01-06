@@ -48,6 +48,7 @@ def create_url():
         flash(error, "danger")
         return render_template("index.html", url_name=url), 422
 
+    url = urls.normalize(url)
     conn = db.get_db(app)
     if existed_url := db.find_url_by_name(conn, url):
         id = existed_url.id
